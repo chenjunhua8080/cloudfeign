@@ -1,0 +1,27 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+server:
+  port: 8300
+spring:
+  application:
+    name: service-feign
+feign:
+  hystrix:
+    enabled: true #使用断熔
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000 #Hystrix Readed time out
+ribbon:
+  ReadTimeout: 60000 #Hystrix Readed time out
+  ConnectTimeout: 60000 #Hystrix Readed time out
